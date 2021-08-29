@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy!
   end
 
   private
