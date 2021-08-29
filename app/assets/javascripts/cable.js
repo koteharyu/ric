@@ -4,6 +4,8 @@
 //= require action_cable
 //= require_self
 //= require_tree ./channels
+//= require swiper/js/swiper.js
+//= require swiper.js
 
 (function() {
   this.App || (this.App = {});
