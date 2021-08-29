@@ -17,6 +17,9 @@ module Ric
     # the framework and any gems in your application.
     config.generators.system_tests = nil
 
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+
     config.generators do |g|
       g.skip_routes true
       g.assets false
