@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       auto_login(@user)
       redirect_to login_path, success: 'ようこそ'
     else
-      flash.now[:danger] = "もう一度やって"
+      flash.now[:danger] = 'もう一度やって'
       render :new
     end
   end
