@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-
+    @comment = current_user.comments.find(params[:id])
   end
 
   def update
