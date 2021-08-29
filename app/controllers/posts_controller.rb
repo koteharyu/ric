@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @posts = Post.all.includes(:user)
@@ -24,11 +24,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = current_user.posts.params[:id]
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
-    @post = current_user.posts.params[:id]
+    @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post), success: '更新に成功'
     else
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.params[:id]
+    @post = current_user.posts.find(params[:id])
     @post.destroy!
     redirect_to posts_path, success: '削除に成功'
   end
