@@ -2,6 +2,7 @@
   .row
     .col-12.col-md-8
       = render @posts
+      = paginate @posts
     .col-12.col-md-4
       - if logged_in?
         .profile-box.mb-3
