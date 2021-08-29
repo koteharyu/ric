@@ -1,0 +1,6 @@
+.card
+  = form_with model: @post, class: 'card-body', local: true do |f|
+    .form-group
+      = f.label :body, class: 'bmb-label-floating'
+      = f.text_field :body, class: 'form-control'
+    = f.submit '投稿', class: 'btn btn-raised btn-primary'
