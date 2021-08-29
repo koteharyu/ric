@@ -1,1 +1,5 @@
 = post.body
+
+- if post.images.attached?
+  - post.images.each do |img|
+    = image_tag img

@@ -3,4 +3,7 @@
     .form-group
       = f.label :body, class: 'bmb-label-floating'
       = f.text_field :body, class: 'form-control'
+    .form-group
+      = f.label :iamges, class: 'bmb-label-floating'
+      = f.file_field :images, multiple: true
     = f.submit '投稿', class: 'btn btn-raised btn-primary'
