@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, only: [:creat, :edit, :update, :destroy]
 
   def create
     @comment = current_user.comments.create(comment_params)
