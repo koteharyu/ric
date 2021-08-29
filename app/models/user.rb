@@ -26,6 +26,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   def own?(object)
-    id == object.user.id
+    id == object.user_id
   end
 end
