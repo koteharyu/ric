@@ -24,7 +24,6 @@ module Ric
     # i18nの複数ロケールファイルが読み込まれるようpathを通す
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
-
     config.generators do |g|
       g.skip_routes true
       g.assets false
