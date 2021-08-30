@@ -48,4 +48,20 @@ class User < ApplicationRecord
   def like?(post)
     like_posts.include?(post)
   end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    following.destroy(other_user)
+  end
+
+  def follow?(other_user)
+    following.include?(other_user)
+  end
+
+  def feed
+    Post.where(user_id: following_ids << id)
+  end
 end
