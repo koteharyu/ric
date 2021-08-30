@@ -29,9 +29,15 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  # 外部キーをfollowed_idとして指定し、Relationshipモデルを取得する。（followed_idを取得するため）
+  # これを'passive_relationships`と命名する。
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
-  has_many :following, through: :active_relationships, source: :follower
-  has_many :followers, through: :passive_relationships, source: :followed
+
+  # userモデルから、relationshipモデルを通して、followしているユーザーを取得したい
+  has_many :following, through: :active_relationships, source: :followed
+  # userモデルから、relationshipモデルを通して、followersであるユーザーを取得したい
+  has_many :followers, through: :passive_relationships, source: :follower
+
 
   scope :recent, -> (count) { order(created_at: :desc).limit(count) }
 
