@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
+    @users = User.recent(5)
   end
 
   def edit
