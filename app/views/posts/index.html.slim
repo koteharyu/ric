@@ -1,7 +1,11 @@
 .container
   .row
     .col-12.col-md-8
-      = render @posts
+      - if @posts.present?
+        = render @posts
+      - else
+        .text-center.font-weight-bold
+          | 投稿がありません
       = paginate @posts
     .col-12.col-md-4
       - if logged_in?
