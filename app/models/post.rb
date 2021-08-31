@@ -24,4 +24,6 @@ class Post < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
 
   validates :body, presence: true, length: { maximum: 1000 }
+
+  scope :body_contain, -> (word) { where('body LIKE ?', "%#{word}%") }
 end
