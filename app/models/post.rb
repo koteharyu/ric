@@ -25,5 +25,7 @@ class Post < ApplicationRecord
 
   validates :body, presence: true, length: { maximum: 1000 }
 
-  scope :body_contain, -> (word) { where('body LIKE ?', "%#{word}%") }
+  scope :body_contain, -> (body) { where('body LIKE ?', "%#{body}%") }
+  scope :comment_contain, -> (comment_body) { joins(:comments).where('comments.body LIKE ?', "%#{comment_body}%") }
+  scope :username_contain, -> (username) { joins(:user).where('username LIKE ?', "%#{username}%") }
 end
