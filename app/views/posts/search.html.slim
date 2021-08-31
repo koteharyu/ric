@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-12.col-md-6.offset-3
+      h2.text-center
+        | 検索結果: #{@posts.total_count}件
+      = render @posts
+      = paginate @posts
