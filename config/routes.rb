@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :notifications, only: [] do
-    resource :read, only: [:create]
+    resource :read, only: %i[create]
   end
 
   namespace :mypage do

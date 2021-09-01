@@ -30,7 +30,7 @@ class Relationship < ApplicationRecord
   validates :follower_id, uniqueness: { scope: :followed_id }
 
   def partial_name
-    'followd_me'
+    'followed_me'
   end
 
   def resource_path
