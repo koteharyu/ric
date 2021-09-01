@@ -38,6 +38,8 @@ class User < ApplicationRecord
   # userモデルから、relationshipモデルを通して、followersであるユーザーを取得したい
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :notifications, dependent: :destroy
+
   has_one_attached :avatar
 
   scope :recent, ->(count) { order(created_at: :desc).limit(count) }

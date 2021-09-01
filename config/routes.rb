@@ -47,7 +47,12 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
+  resources :notifications, only: [] do
+    resource :read, only: %i[create]
+  end
+
   namespace :mypage do
     resource :account, only: [:edit, :update]
+    resources :notifications, only: [:index]
   end
 end
