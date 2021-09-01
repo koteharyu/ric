@@ -20,6 +20,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Like < ApplicationRecord
+
+  include Rails.application.routes.url_helpers
+
   after_create_commit :create_notification
   belongs_to :user
   belongs_to :post
@@ -32,5 +35,13 @@ class Like < ApplicationRecord
 
   def create_notification
     Notification.create(notifiable: self, user: post.user)
+  end
+
+  def partial_name
+    'liked_to_own_post'
+  end
+
+  def resource_path
+    post_path(post)
   end
 end
