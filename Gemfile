@@ -41,6 +41,7 @@ gem 'font-awesome-sass'
 gem 'annotate'
 gem 'faker'
 gem 'kaminari'
+gem 'config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,6 +61,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'letter_opener_web'
 end
 
 group :test do
