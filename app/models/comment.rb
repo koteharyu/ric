@@ -31,7 +31,7 @@ class Comment < ApplicationRecord
   validates :body, presence: true, length: { maximum: 1000 }
 
   def partial_name
-    'Commented_to_own_post'
+    'commented_to_own_post'
   end
 
   def resource_path
