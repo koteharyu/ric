@@ -1,4 +1,5 @@
 class ReadsController < ApplicationController
+  before_action :require_login
 
   def create
     @notification = current_user.notifications.find(params[:notification_id])
