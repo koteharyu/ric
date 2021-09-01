@@ -8,7 +8,9 @@ class SearchPostsForm
 
   def search
     scope = Post.distinct
-    scope = splited_bodies.map { |splited_body| scope.body_contain(splited_body) }.inject { |result, scp| result.or(scp) } if body.present?    scope = scope.comment_contain(body) if comment_body.present?
+    if comment_body.present? && (body.present? scope = scope.comment_contain(body))
+      scope = splited_bodies.map { |splited_body| scope.body_contain(splited_body) }.inject { |result, scp| result.or(scp) }
+    end
     scope = scope.username_contain(body) if username.present?
     scope
   end
