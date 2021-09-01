@@ -1,0 +1,10 @@
+= link_to notification_read_path(notification), class: "dropdown-item border-bottom #{'read' if notification.read?}", method: :post do
+  - if notification.notifiable.follower.avatar.attached?
+    = image_tag notification.notifiable.follower.avatar, size: '30x30', class: 'rounded-circle'
+  - else
+    = image_tag 'profile-placeholder.png', size: '30x30', class: 'rounded-circle'
+  object
+    = link_to notification.notifiable.follower.username, user_path(notification.notifiable.follower)
+  | があなたをフォローしました
+  .ml-auto
+    = l notification.created_at, format: :short

@@ -1,0 +1,16 @@
+= link_to notification_read_path(notification), class: "dropdown-item border-bottom #{'read' if notification.read?}", method: :post do
+  - if notification.notifiable.user.avatar.attached?
+    = image_tag notification.notifiable.user.avatar, size: '30x30', class: 'rounded-circle'
+  - else
+    = image_tag 'profile-placeholder.png', size: '30x30', class: 'rounded-circle'
+  object
+    = link_to notification.notifiable.user.username, user_path(notification.notifiable.user)
+  | があなたの
+  object
+    = link_to "投稿", post_path(notification.notifiable.post)
+  | に
+  object
+    = link_to "コメント", post_path(notification.notifiable.post, anchor: "comment-#{notification.notifiable.id}")
+  | しました
+  .ml-auto
+    = l notification.created_at, format: :short
