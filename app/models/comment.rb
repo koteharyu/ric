@@ -20,9 +20,16 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Comment < ApplicationRecord
+  after_create_commit :create_notification
   belongs_to :user
   belongs_to :post
   has_one :notification, as: :notifiable, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 1000 }
+
+  private
+
+  def create_notification
+    Notification.create(notifiable: self, user: post.user)
+  end
 end
