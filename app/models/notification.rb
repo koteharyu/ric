@@ -27,7 +27,7 @@ class Notification < ApplicationRecord
 
   scope :recent, -> (count) { order(created_at: :desc).limit(count)}
 
-  def call_appropiate_partial
+  def call_appropriate_partial
     case self.notifiable_type
     when 'Comment'
       'commented_to_own_post'
