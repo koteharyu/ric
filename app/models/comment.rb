@@ -30,17 +30,17 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true, length: { maximum: 1000 }
 
-  private
-
-  def create_notification
-    Notification.create(notifiable: self, user: post.user)
-  end
-
   def partial_name
     'Commented_to_own_post'
   end
 
   def resource_path
     post_path(post)
+  end
+
+  private
+
+  def create_notification
+    Notification.create(notifiable: self, user: post.user)
   end
 end

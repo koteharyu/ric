@@ -29,17 +29,17 @@ class Relationship < ApplicationRecord
   # ユニーク制約
   validates :follower_id, uniqueness: { scope: :followed_id }
 
-  private
-
-  def create_notification
-    Notification.create(notifiable: self, user: followed)
-  end
-
   def partial_name
     'followd_me'
   end
 
   def resource_path
     user_path(follower)
+  end
+
+  private
+
+  def create_notification
+    Notification.create(notifiable: self, user: followed)
   end
 end
