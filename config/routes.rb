@@ -46,4 +46,8 @@ Rails.application.routes.draw do
   end
   resources :likes, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+
+  namespace :mypage do
+    resource :account, only: [:edit, :update]
+  end
 end
