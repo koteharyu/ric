@@ -50,6 +50,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '削除に成功'
   end
 
+  def search
+    @posts = @search_form.search.includes(:user).page(params[:page])
+  end
+
   private
 
   def post_params
