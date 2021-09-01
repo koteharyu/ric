@@ -26,4 +26,15 @@ class Notification < ApplicationRecord
   enum read: { unread: false, read: true }
 
   scope :recent, -> (count) { order(created_at: :desc).limit(count)}
+
+  def call_appropiate_partial
+    case self.notifiable_type
+    when 'Comment'
+      'commented_to_own_post'
+    when 'Like'
+      'liked_to_own_post'
+    when 'Relationship'
+      'followed_me'
+    end
+  end
 end
