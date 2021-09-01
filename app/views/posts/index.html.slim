@@ -10,8 +10,11 @@
     .col-12.col-md-4
       - if logged_in?
         .profile-box.mb-3
-          = image_tag 'profile-placeholder.png', size: '50x50', class: 'rounded-circle mr-1'
-          = current_user.username
+          - if current_user.avatar.attached?
+            = image_tag current_user.avatar, size: '40x40', class: 'rounded-circle mr-1'
+          - else
+            = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
+          = link_to current_user.username, edit_mypage_account_path
       .users-box
         .card
           .card-header
