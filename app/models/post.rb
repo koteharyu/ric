@@ -24,6 +24,7 @@ class Post < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
 
   validates :body, presence: true, length: { maximum: 1000 }
+  validates :images, presence: true
 
   scope :body_contain, ->(body) { where('body LIKE ?', "%#{body}%") }
   scope :comment_contain, ->(comment_body) { joins(:comments).where('comments.body LIKE ?', "%#{comment_body}%") }
