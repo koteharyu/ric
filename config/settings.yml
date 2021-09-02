@@ -1,0 +1,10 @@
+meta:
+  site: InstaClone
+  title: InstaClone - Railsの実践的アプリケーション
+  description: Ruby on Railsの実践的な課題。ちなみに2週目
+  keywords:
+    - Rails
+    - Ruby
+    - InstaClone
+  og:
+    type: website
