@@ -49,12 +49,13 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :notifications, only: [] do
-    resource :read, only: %i[create]
+    resource :read, only: [:create]
   end
 
   namespace :mypage do
     resource :account, only: [:edit, :update]
     resources :notifications, only: [:index]
+    resource :notification_settings, only: [:edit, :update]
   end
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
